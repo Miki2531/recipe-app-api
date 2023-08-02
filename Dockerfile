@@ -1,4 +1,4 @@
-FROM 3.11-windowsservercore-1809
+FROM python:3.9-windowsservercore-ltsc2019
 LABEL maintainer="ethioappdeveloper.com"
 
 ENV PYTHONUNBUFFERED 1
