@@ -1,4 +1,4 @@
-FROM python:3.9-alpine3.13
+FROM 3.11-windowsservercore-1809
 LABEL maintainer="ethioappdeveloper.com"
 
 ENV PYTHONUNBUFFERED 1
