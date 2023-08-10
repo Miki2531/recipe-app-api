@@ -4,11 +4,11 @@ Django admin customization.
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
-from core import models
+from .models import User
 
 
 class CustomUserAdmin(BaseUserAdmin):
-    """ Define the admin page for users."""
+    """ Define the admin page users."""
     ordering = ['id']
     list_display = ['email', 'name']
     fieldsets = (
@@ -44,4 +44,4 @@ class CustomUserAdmin(BaseUserAdmin):
 
 
 
-admin.site.register(models.User, CustomUserAdmin)
+admin.site.register(User, CustomUserAdmin)
