@@ -6,7 +6,7 @@ Serializers for recip APIs.
 from rest_framework import serializers
 from core.models import Recipe
 
-class RecipeSerializers(serializers.ModelSerializers):
+class RecipeSerializers(serializers.ModelSerializer):
     """Serializers for recipe"""
 
     class Meta:
