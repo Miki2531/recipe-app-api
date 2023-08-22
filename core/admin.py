@@ -4,7 +4,7 @@ Django admin customization.
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
-from .models import User
+from . import models
 
 
 class CustomUserAdmin(BaseUserAdmin):
@@ -20,7 +20,7 @@ class CustomUserAdmin(BaseUserAdmin):
                 'fields': (
                     'is_active',
                     'is_staff',
-                    'is_supperuser',
+                    # 'is_supperuser',
                 )
             }
         ),
@@ -44,4 +44,6 @@ class CustomUserAdmin(BaseUserAdmin):
 
 
 
-admin.site.register(User, CustomUserAdmin)
+admin.site.register(models.User, CustomUserAdmin)
+admin.site.register(models.Recipe)
+admin.site.register(models.Tag)
