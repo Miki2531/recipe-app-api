@@ -124,7 +124,7 @@ class PrivateUserApiTests(TestCase):
             name = 'Test Name'
         )
 
-        self.client = APIClient
+        self.client = APIClient()
         """ Forcibly authenticates outgoing requests with the given user and/or token."""
         self.client.force_authenticate(user=self.user)
 

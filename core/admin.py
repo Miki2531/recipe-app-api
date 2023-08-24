@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from . import models
 
 
-class CustomUserAdmin(BaseUserAdmin):
+class UserAdmin(BaseUserAdmin):
     """ Define the admin page users."""
     ordering = ['id']
     list_display = ['email', 'name']
@@ -20,7 +20,7 @@ class CustomUserAdmin(BaseUserAdmin):
                 'fields': (
                     'is_active',
                     'is_staff',
-                    # 'is_supperuser',
+                    'is_superuser',
                 )
             }
         ),
@@ -44,6 +44,6 @@ class CustomUserAdmin(BaseUserAdmin):
 
 
 
-admin.site.register(models.User, CustomUserAdmin)
+admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Recipe)
 admin.site.register(models.Tag)

@@ -92,7 +92,7 @@ class PrivateRecipeApiTests(TestCase):
         url = detail_url(recipe.id)
         res = self.client.get(url)
         serializer = RecipeDetailSerializer(recipe)
-        self.asserEqual(res.data, serializer.data)
+        self.assertEqual(res.data, serializer.data)
             
     def test_create_recipe(self):
         """Test creating a recipe."""
@@ -112,7 +112,7 @@ class PrivateRecipeApiTests(TestCase):
     def test_partial_update(self):
         """Test a partial update of recipe"""
         original_link = 'https://example.com/recipe.pdf'
-        recipe = create_user(
+        recipe = create_recipe(
             user = self.user,
             title = 'Sample recipe title',
             link= original_link,
@@ -125,7 +125,7 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(res.status_code , status.HTTP_200_OK)
         recipe.refresh_from_db()
         self.assertEqual(recipe.title, payload['title'])
-        self.assertEqula(recipe.link, original_link)
+        self.assertEqual(recipe.link, original_link)
         self.assertEqual(recipe.user, self.user)
 
     def test_full_update(self):
@@ -192,7 +192,7 @@ class PrivateRecipeApiTests(TestCase):
 
         res = self.client.post(RECIPES_URL, payload, format='json')
 
-        self.asseertEqual(res.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         recipes = Recipe.objects.filter(user=self.user)
         self.assertEqual(recipes.count(), 1)
         recipe = recipes[0]
@@ -221,7 +221,7 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(recipes.count(), 1)
         recipe =recipes[0]
         self.assertEqual(recipe.tags.count(), 2)
-        self.assertIn(tag_ethio, recipe.tgas.all())
+        self.assertIn(tag_ethio, recipe.tags.all())
         for tag in payload['tags']:
             exists = recipe.tags.filter(
                 name=tag['name'],

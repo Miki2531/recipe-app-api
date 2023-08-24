@@ -10,7 +10,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from core.models import Tag
-from recipe.serializers import TgaSerializer
+from recipe.serializers import TagSerializer
 
 TAGS_URL = reverse('recipe:tag-list')
 
@@ -49,7 +49,7 @@ class PrivateTagsApiTests(TestCase):
 
         res = self.client.get(TAGS_URL)
         tags =  Tag.objects.all().order_by('-name')
-        serializer = TgaSerializer(tags, many=True)
+        serializer = TagSerializer(tags, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
