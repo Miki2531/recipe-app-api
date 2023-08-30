@@ -93,7 +93,7 @@ class RecipeDetailSerializer(RecipeSerializers):
     """ Serializer for recipe detail view."""
 
     class Meta(RecipeSerializers.Meta):
-        fields = RecipeSerializers.Meta.fields + ['description']
+        fields = RecipeSerializers.Meta.fields + ['description', 'image']
 
 class RecipeImageSerializer(serializers.ModelSerializer):
     """Serializers for uploading images to recipe."""
